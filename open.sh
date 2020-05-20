@@ -90,7 +90,7 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s" $link
+printf ":- \033[0m%s\n" $link
 		
 		}
 	start-subdomain () {
@@ -146,7 +146,7 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s" $link
+printf ":- \033[0m%s\n" $link
 		}
 	subdomain () {
 		echo -e -n "\n\033[1;93m[\033[1;77m*\033[1;93m]\033[1;92m Custome subdomain \033[1;91m(\033[0my|N\033[1;91m) \033[97m"

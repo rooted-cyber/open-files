@@ -33,6 +33,7 @@ file () {
 	rm -rf manual > /dev/null 2>&1
 	cd /sdcard/open-share
 	cp -f * $PREFIX/share/apach*/def*/htdo*
+	folder
 	apachectl start > /dev/null 2>&1
 	subdomain
 	else
@@ -45,6 +46,7 @@ file () {
 		printf "\n\033[1;93m[\033[1;77m*\033[1;93m]\033[1;92m Starting serveo server.....\n"
 		$(which sh) -c 'ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -R 80:localhost:3333 serveo.net 2> /dev/null > sendlink ' &
 		sleep 9
+		folder
 		printf "\n\033[1;93m[\033[1;77m*\033[1;93m]\033[1;92m Starting php server.....\n"
 		fuser -k 3333/tcp > /dev/null 2>&1
 		php -S localhost:3333 > /dev/null 2>&1 &
@@ -89,7 +91,7 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s" $link
+printf ":- \033[0m%s\n" $link
 		
 		}
 	start-subdomain () {
@@ -145,7 +147,7 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s" $link
+printf ":- \033[0m%s\n" $link
 		}
 	subdomain () {
 		echo -e -n "\n\033[1;93m[\033[1;77m*\033[1;93m]\033[1;92m Custome subdomain \033[1;91m(\033[0my|N\033[1;91m) \033[97m"
