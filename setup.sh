@@ -33,3 +33,9 @@ set () {
 		chmod 700 ngrok
 		fi
 		}
+		cd $PREFIX/bin
+		if [ -e open ];then
+		echo
+		else
+		set
+		fi
