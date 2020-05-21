@@ -21,7 +21,34 @@ fi
 exit 1
 
 }
+catch_ip() {
 
+ip=$(grep -a 'IP:' ip.txt | cut -d " " -f2 | tr -d '\r')
+IFS=$'\n'
+printf "\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] IP:\e[0m\e[1;77m %s\e[0m\n" $ip
+
+cat ip.txt >> saved.ip.txt
+
+
+}
+
+checkfound() {
+
+printf "\n"
+echo -e "\033[0m"
+printf "\033[1;93m Waiting to open link, Press Ctrl + C to exit...\n"
+while [ true ]; do
+
+cd ~/open-files
+if [[ -e "ip.txt" ]]; then
+echo -e "\033[0m"
+printf "\n\033[1;92m[√]\033[1;93m Your Link Opened\n"
+catch_ip
+rm -rf ip.txt
+
+fi
+done
+}
 
 file () {
 	printf "\n\033[1;92m Copy .html file in \033[1;97m /sdcard/open-files\n"
@@ -90,7 +117,8 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s\n" $link
+printf ":- \033[0m%s\n£\n" $link
+checkfound
 		
 		}
 	start-subdomain () {
@@ -146,7 +174,8 @@ printf "n"
 sleep 0.1
 printf "k"
 sleep 0.1
-printf ":- \033[0m%s\n" $link
+printf ":- \033[0m%s\n\n" $link
+checkfound
 		}
 	subdomain () {
 		echo -e -n "\n\033[1;93m[\033[1;77m*\033[1;93m]\033[1;92m Custome subdomain \033[1;91m(\033[0my|N\033[1;91m) \033[97m"
